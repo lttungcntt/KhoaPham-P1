@@ -1,0 +1,99 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+project.ext.envConfigFiles = [
+        alpha: "env/.env.alpha",
+        dev  : "env/.env.dev",
+        prg  : "env/.env.prg",
+        uat  : "env/.env.uat",
+        prd  : "env/.env.prd",
+]
+apply from: project(':flutter_config').projectDir.getPath() + "/dotenv.gradle"
+
+android {
+    compileSdk 34 // flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId project.env.get("PACKAGE_NAME")
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
+        minSdkVersion 24 // flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        resValue "string", "build_config_package", "ios.tyler.flutter_base"
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `dart run --release` works.
+            signingConfig signingConfigs.debug
+
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "environment"
+    productFlavors {
+        alpha {
+            dimension "environment"
+        }
+        dev {
+            dimension "environment"
+        }
+        prg {
+            dimension "environment"
+        }
+        uat {
+            dimension "environment"
+        }
+        prd {
+            dimension "environment"
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {}

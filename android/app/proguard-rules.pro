@@ -1,0 +1,1 @@
+-keep class ios.tyler.flutter_base.BuildConfig { *; }
