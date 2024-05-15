@@ -1,0 +1,108 @@
+name: flutter_base
+description: A base Flutter project.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.1
+  auto_route: ^8.0.3
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.5
+  flutter_config: ^2.0.2
+  flutter_loggy: ^2.0.2
+  flutter_svg: ^2.0.10+1
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+  dio: ^5.4.2+1
+  get_it: ^7.6.8
+  injectable: ^2.4.1
+  shared_preferences: ^2.2.2
+  flutter_secure_storage: ^9.0.0
+  loggy: ^2.0.3
+  package_info_plus: ^8.0.0
+  rxdart: ^0.27.7
+  dartz: ^0.10.1
+  uuid: ^4.3.3
+  stack_trace: ^1.11.1
+  enum_annotation: ^0.0.4
+  rx_shared_preferences: ^3.1.0
+  streaming_shared_preferences: ^2.0.0
+  dartx: ^1.2.0
+  result_dart: ^1.1.1
+  retrofit: ^4.1.0
+  flutter_screenutil: ^5.9.0
+  talker_flutter: ^4.1.3
+  talker_dio_logger: ^4.1.3
+  talker_bloc_logger: ^4.1.3
+
+
+dev_dependencies:
+  flutter_lints: ^3.0.2
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  build_runner: ^2.4.9
+  bloc_test: ^9.1.7
+  mocktail: ^1.0.3
+  freezed: ^2.5.1
+  json_serializable: ^6.7.1
+  auto_route_generator: ^8.0.0
+  flutter_gen_runner: ^5.4.0
+  intl_utils: ^2.8.7
+  enum_generator: ^1.1.2
+  injectable_generator: ^2.6.1
+  flutter_launcher_icons: ^0.13.1
+  retrofit_generator: ^8.1.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto/Roboto-Italic.ttf
+        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+        - asset: assets/fonts/Roboto/Roboto-MediumItalic.ttf
+        - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto/Roboto-BoldItalic.ttf
+
+flutter_gen:
+  output: lib/generated/
+
+  integrations:
+    flutter_svg: true
+    flare_flutter: false
+    rive: false
+
+  assets:
+    enabled: true
+    outputs:
+      # Optional
+      # Set to true if you want this package to be a package dependency
+      # See: https://flutter.dev/docs/development/ui/assets-and-images#from-packages
+      package_parameter_enabled: false
+      style: dot-delimiter
+
+  fonts:
+    enabled: true
+
+  colors:
+    enabled: true
+    inputs:
+      - assets/color/colors.xml
+
+flutter_intl:
+  enabled: true
+  main_locale: 'en'
+  arb_dir: assets/l10n
