@@ -7,6 +7,7 @@ import '../../modules/auth/presentation/pages/auth_page.dart';
 import '../../modules/counter/presentation/pages/counter_page.dart';
 import '../../modules/home/presentation/pages/home_page.dart';
 import '../../modules/splash/presentation/pages/splash_page.dart';
+import '../dashboard/presentation/pages/dashboard_page.dart';
 import '../settings/presentation/pages/settings_page.dart';
 import '../supportive/presentation/pages/supportive_page.dart';
 
@@ -24,5 +25,6 @@ class AppRouter extends _$AppRouter {
     AutoRoute(page: AboutRoute.page),
     AutoRoute(page: SettingsRoute.page),
     AutoRoute(page: SupportiveRoute.page),
+    AutoRoute(page: DashboardRoute.page),
   ];
 }
