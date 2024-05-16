@@ -1,0 +1,78 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "alpha",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "alpha"
+            ]
+        },
+        {
+            "name": "dev",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "dev"
+            ]
+        },
+        {
+            "name": "prd",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "prd"
+            ]
+        },
+        {
+            "name": "prg",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "prg"
+            ]
+        },
+        {
+            "name": "uat",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "uat"
+            ]
+        },
+        {
+            "name": "pgrc",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "pgrc"
+            ]
+        },
+        {
+            "name": "Avalon-App (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "Avalon-App (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "prg"
+            ]
+        },
+    ]
+}
