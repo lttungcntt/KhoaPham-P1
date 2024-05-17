@@ -25,6 +25,7 @@ class DashboardBody extends StatelessWidget {
               _ => const SizedBox.shrink(),
             },
             bottomNavigationBar: CubertoBottomBar(
+              
               inactiveIconColor: ColorName.primary,
               tabStyle: CubertoTabStyle.styleNormal,
               selectedTab: state.position,
