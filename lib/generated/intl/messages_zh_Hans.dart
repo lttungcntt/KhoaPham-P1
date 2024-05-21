@@ -65,6 +65,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "common_submit": MessageLookupByLibrary.simpleMessage("提交"),
         "common_success": MessageLookupByLibrary.simpleMessage("成功"),
         "common_terms_conditions": MessageLookupByLibrary.simpleMessage("条款条件"),
-        "common_version": m0
+        "common_version": m0,
+        "setting_dark_mode": MessageLookupByLibrary.simpleMessage("深色模式"),
+        "setting_no": MessageLookupByLibrary.simpleMessage("不"),
+        "setting_system": MessageLookupByLibrary.simpleMessage("系统"),
+        "setting_yes": MessageLookupByLibrary.simpleMessage("是的")
       };
 }

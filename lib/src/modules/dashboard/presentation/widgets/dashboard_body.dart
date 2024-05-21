@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:motion_tab_bar_v2/motion-tab-controller.dart';
@@ -22,9 +21,7 @@ class DashboardBody extends StatefulWidget {
 }
 
 class _DashboardBodyState extends State<DashboardBody>
-    with
-        TickerProviderStateMixin,
-        AutomaticKeepAliveClientMixin<DashboardBody> {
+    with TickerProviderStateMixin {
   // TabController _tabController;
   MotionTabBarController? _motionTabBarController;
 
@@ -36,9 +33,6 @@ class _DashboardBodyState extends State<DashboardBody>
       length: 3,
       vsync: this,
     );
-    if (_motionTabBarController.isNotNull) {
-      _motionTabBarController!.animateTo(0);
-    }
   }
 
   @override
@@ -51,23 +45,21 @@ class _DashboardBodyState extends State<DashboardBody>
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
-    List<Map<String, IconData>> tabs = [
-      {context.s.common_home: Icons.home},
-      {context.s.common_about: Icons.info},
-      {context.s.common_settings: Icons.settings},
-    ];
     return Scaffold(
         backgroundColor: Colors.transparent,
         extendBody: false,
-        body: BlocBuilder<LangCubit, Locale>(
+        body: BlocConsumer<LangCubit, Locale>(
+          listener: (context, state) => setState(() {
+            _motionTabBarController!.index =
+                context.read<DashboardCubit>().state.position;
+          }),
           builder: (context, state) {
             return TabBarView(
               controller: _motionTabBarController,
-              children: [
-                HomePage(key: UniqueKey()),
-                AboutPage(key: UniqueKey()),
-                SettingsPage(key: UniqueKey()),
+              children: const [
+                HomePage(),
+                AboutPage(),
+                SettingsPage(),
               ],
             );
           },
@@ -82,6 +74,11 @@ class _DashboardBodyState extends State<DashboardBody>
           buildWhen: (previous, current) =>
               previous.position != current.position,
           builder: (context, state) {
+            List<Map<String, IconData>> tabs = [
+              {context.s.common_home: Icons.home},
+              {context.s.common_about: Icons.info},
+              {context.s.common_settings: Icons.settings},
+            ];
             return MotionTabBar(
               textStyle: context.textTheme.titleMedium.copyWith(
                 color: context.color.tertiary,
@@ -97,14 +94,11 @@ class _DashboardBodyState extends State<DashboardBody>
               controller: _motionTabBarController,
               labels: tabs.map((e) => e.keys.first).toList(),
               icons: tabs.map((e) => e.values.first).toList(),
-              initialSelectedTab: tabs[0].keys.first,
+              initialSelectedTab: tabs[state.position].keys.first,
               onTabItemSelected: (int value) =>
                   context.read<DashboardCubit>().setPosition(value),
             );
           },
         ));
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }

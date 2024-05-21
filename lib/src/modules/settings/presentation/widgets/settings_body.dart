@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../common/extensions/build_context_x.dart';
 import '../../../../common/extensions/locale_x.dart';
 import '../../../../core/application/cubits/lang/lang_cubit.dart';
 import '../../../../core/application/cubits/lang/theme_cubit.dart';
 import '../../../app/app_router.dart';
+import '../../../dashboard/application/cubit/dashboard_cubit.dart';
+
 class SettingsBody extends StatelessWidget {
   const SettingsBody({
     super.key,
@@ -48,8 +51,7 @@ class SettingsBody extends StatelessWidget {
                             child: Text(
                               locale.languageName,
                               style: context.textTheme.titleMedium
-                                  .copyWith(
-                                      color: context.color.tertiary),
+                                  .copyWith(color: context.color.tertiary),
                             ),
                           ))
                       .toList(),
@@ -57,7 +59,8 @@ class SettingsBody extends StatelessWidget {
                     if (value == null) return;
                     final langCubit = context.read<LangCubit>();
                     langCubit.setLocale(value);
-                    context.router.replaceAll([SplashRoute()]);
+                    context.read<DashboardCubit>().setPosition(0);
+                    context.router.replace(SplashRoute());
                   });
             },
           ),
@@ -71,7 +74,7 @@ class SettingsBody extends StatelessWidget {
       title: Row(
         children: [
           Text(
-            'Theme Mode',
+            context.s.setting_dark_mode,
             style: context.textTheme.titleMedium
                 .copyWith(color: context.color.tertiary),
           ),
@@ -85,14 +88,9 @@ class SettingsBody extends StatelessWidget {
                       .map((themeMode) => DropdownMenuItem(
                             value: themeMode,
                             child: Text(
-                              themeMode
-                                  .toString()
-                                  .split('.')
-                                  .last
-                                  .toUpperCase(),
+                              context.s.themeMode(themeMode),
                               style: context.textTheme.titleMedium
-                                  .copyWith(
-                                      color: context.color.tertiary),
+                                  .copyWith(color: context.color.tertiary),
                             ),
                           ))
                       .toList(),
@@ -118,13 +116,25 @@ class SettingsBody extends StatelessWidget {
             final buildNumber = snapshot.data?.buildNumber;
 
             if (version != null && buildNumber != null) {
-              return Text(
-                  context.s.common_version('$version($buildNumber)'),
+              return Text(context.s.common_version('$version($buildNumber)'),
                   style: context.textTheme.titleSmall
                       .copyWith(color: context.color.tertiary));
             }
             return const SizedBox();
           }),
     );
+  }
+}
+
+extension ThemeModeX on S {
+  String themeMode(ThemeMode themeMode) {
+    switch (themeMode) {
+      case ThemeMode.system:
+        return setting_system;
+      case ThemeMode.light:
+        return setting_no;
+      case ThemeMode.dark:
+        return setting_yes;
+    }
   }
 }

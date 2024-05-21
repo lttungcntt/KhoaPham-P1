@@ -270,16 +270,6 @@ class S {
     );
   }
 
-  /// `About`
-  String get common_about {
-    return Intl.message(
-      'About',
-      name: 'common_about',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Error Unexpected`
   String get common_error_unexpected {
     return Intl.message(
@@ -305,6 +295,16 @@ class S {
     return Intl.message(
       'Error Unauthorized',
       name: 'common_error_unauthorized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About`
+  String get common_about {
+    return Intl.message(
+      'About',
+      name: 'common_about',
       desc: '',
       args: [],
     );
@@ -427,6 +427,46 @@ class S {
       name: 'common_version',
       desc: '',
       args: [x],
+    );
+  }
+
+  /// `Dark Mode`
+  String get setting_dark_mode {
+    return Intl.message(
+      'Dark Mode',
+      name: 'setting_dark_mode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `System`
+  String get setting_system {
+    return Intl.message(
+      'System',
+      name: 'setting_system',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get setting_yes {
+    return Intl.message(
+      'Yes',
+      name: 'setting_yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get setting_no {
+    return Intl.message(
+      'No',
+      name: 'setting_no',
+      desc: '',
+      args: [],
     );
   }
 }

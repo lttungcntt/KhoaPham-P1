@@ -27,4 +27,10 @@ class DashboardCubit extends Cubit<DashboardState> with CancelableBaseBloc {
   }
 
   void setPosition(int position) => emit(state.onSetPosition(position));
+
+  @override
+  void cancel([reason]) {
+    // TODO: implement cancel
+    super.cancel(reason);
+  }
 }

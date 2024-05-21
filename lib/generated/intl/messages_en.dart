@@ -70,6 +70,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "common_success": MessageLookupByLibrary.simpleMessage("Success"),
         "common_terms_conditions":
             MessageLookupByLibrary.simpleMessage("Terms Conditions"),
-        "common_version": m0
+        "common_version": m0,
+        "setting_dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "setting_no": MessageLookupByLibrary.simpleMessage("No"),
+        "setting_system": MessageLookupByLibrary.simpleMessage("System"),
+        "setting_yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

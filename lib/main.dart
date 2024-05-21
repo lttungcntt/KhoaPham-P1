@@ -52,6 +52,12 @@ void main() {
               //     authenticated: (user) => router.replaceAll([const HomeRoute()]),
               //     unauthenticated: () => router.replaceAll([const HomeRoute()]));
             }),
+            BlocListener<DashboardCubit, DashboardState>(listener: (context, state) {
+              // final router = getIt<AppRouter>();
+              // state.whenOrNull(
+              //     authenticated: (user) => router.replaceAll([const HomeRoute()]),
+              //     unauthenticated: () => router.replaceAll([const HomeRoute()]));
+            }),
           ],
           child: const AppWidget(),
         ),
