@@ -13,11 +13,11 @@ import 'src/common/utils/getit_utils.dart';
 import 'src/common/utils/logger.dart';
 import 'src/core/application/cubits/auth/auth_cubit.dart';
 import 'src/core/application/cubits/lang/lang_cubit.dart';
+import 'src/core/application/cubits/lang/theme_cubit.dart';
 import 'src/core/domain/interfaces/lang_repository_interface.dart';
 import 'src/core/infrastructure/datasources/local/storage.dart';
 import 'src/modules/app/app_widget.dart';
 import 'src/modules/dashboard/application/cubit/dashboard_cubit.dart';
-
 
 void main() {
   runZonedGuarded(() async {
@@ -30,7 +30,8 @@ void main() {
     final langRepository = getIt<ILangRepository>();
     final talker = getIt<Talker>();
     _setupErrorHooks(talker);
-    logger.d('deviceLocale - ${langRepository.getDeviceLocale().fullLanguageCode}');
+    logger.d(
+        'deviceLocale - ${langRepository.getDeviceLocale().fullLanguageCode}');
     logger.d('currentLocale - ${langRepository.getLocale().fullLanguageCode}');
 
     Bloc.observer = TalkerBlocObserver(talker: talker);
@@ -38,6 +39,7 @@ void main() {
     runApp(
       MultiBlocProvider(
         providers: [
+          BlocProvider(create: (_) => getIt<ThemeCubit>()),
           BlocProvider(create: (_) => getIt<AuthCubit>()),
           BlocProvider(create: (_) => getIt<LangCubit>()),
           BlocProvider(create: (_) => getIt<DashboardCubit>()),

@@ -46,8 +46,11 @@ class ColorName {
     },
   );
 
-  /// Color: #FF5722
-  static const Color primary = Color(0xFFFF5722);
+  /// Color: #658f99
+  static const Color primary = Color(0xFF658F99);
+
+  /// Color: #d1ae82
+  static const Color secondary = Color(0xFFD1AE82);
 
   /// Color: #FFFFFF
   static const Color white = Color(0xFFFFFFFF);

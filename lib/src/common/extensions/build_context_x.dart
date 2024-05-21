@@ -10,6 +10,9 @@ extension BuildContextX on BuildContext {
   TextThemeFactory get textTheme {
     return AppThemeInheritWidget.of(this).factory;
   }
+
+  ColorScheme get color => Theme.of(this).colorScheme;
+
   bool get hasVirtualHome => mediaQuery.padding.bottom > 0;
   S get s => S.of(this);
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../common/extensions/build_context_x.dart';
+import '../../../../common/widgets/common_appbar.dart';
 import '../../../../core/application/cubits/auth/auth_cubit.dart';
 import '../widgets/settings_body.dart';
 
@@ -14,11 +15,8 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) => Scaffold(
-        appBar: AppBar(title: Text(context.s.common_settings)),
-        body: state.maybeWhen(
-          orElse: () => const Center(child: CircularProgressIndicator()),
-          authenticated: (user) => const SettingsBody(),
-        ),
+        appBar: CommonAppBar(title: context.s.common_settings, context: context,),
+        body: const SettingsBody(),
       ),
     );
   }

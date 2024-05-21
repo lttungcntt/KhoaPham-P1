@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:rx_shared_preferences/rx_shared_preferences.dart';
 import 'package:uuid/uuid.dart';
@@ -15,6 +16,7 @@ class _Keys {
   static const accessToken = 'access_token';
   static const deviceId = 'device_id';
   static const pushToken = 'push_token';
+  static const themeMode = 'theme_mode';
 }
 
 class Storage {
@@ -114,4 +116,10 @@ class Storage {
   static String? get pushToken => _get(_Keys.pushToken);
 
   static Future setPushToken(String? val) => _set(_Keys.pushToken, val);
+
+  static Future setThemeMode(int index) => _set(_Keys.themeMode, index);
+
+  static ThemeMode get themeMode => _get<int>(_Keys.themeMode).isNotNull
+      ? ThemeMode.values[_get<int>(_Keys.themeMode)!]
+      : ThemeMode.system;
 }
