@@ -25,7 +25,7 @@ class AppWidget extends StatelessWidget {
     final lightTheme = ThemeData(
       colorScheme: Theme.of(context).colorScheme.copyWith(
             primary: ColorName.primary,
-            background: ColorName.primary,
+            surface: ColorName.primary,
             secondary: ColorName.secondary,
             primaryContainer: ColorName.white,
             tertiary: ColorName.black,
@@ -35,7 +35,7 @@ class AppWidget extends StatelessWidget {
     final darkTheme = ThemeData(
         colorScheme: Theme.of(context).colorScheme.copyWith(
               primary: ColorName.primary,
-              background: ColorName.black,
+              surface: ColorName.black,
               secondary: ColorName.secondary,
               primaryContainer: ColorName.black,
               tertiary: ColorName.white,
