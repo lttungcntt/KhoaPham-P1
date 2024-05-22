@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:motion_tab_bar_v2/motion-tab-controller.dart';
 
 import '../../../../common/extensions/build_context_x.dart';
-import '../../../../common/extensions/optional_x.dart';
 import '../../../../core/application/cubits/lang/lang_cubit.dart';
 import '../../../about/presentation/pages/about_page.dart';
 import '../../../home/presentation/pages/home_page.dart';

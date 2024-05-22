@@ -5,6 +5,5 @@ import '../../../../core/infrastructure/datasources/remote/api/base/api_error.da
 import '../../../home/domain/entities/home.dart';
 
 abstract class IHomeRepository {
- Future<Result<IHome,ApiError>> getById(int id, {CancelToken? token});
+  Future<Result<List<IHome>, ApiError>> get({CancelToken? token});
 }
-

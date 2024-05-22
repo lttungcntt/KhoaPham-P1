@@ -8,6 +8,7 @@ import '../../modules/counter/presentation/pages/counter_page.dart';
 import '../../modules/home/presentation/pages/home_page.dart';
 import '../../modules/splash/presentation/pages/splash_page.dart';
 import '../dashboard/presentation/pages/dashboard_page.dart';
+import '../home_detail/presentation/pages/home_detail_page.dart';
 import '../settings/presentation/pages/settings_page.dart';
 import '../supportive/presentation/pages/supportive_page.dart';
 

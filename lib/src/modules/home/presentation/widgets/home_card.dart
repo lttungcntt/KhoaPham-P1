@@ -4,15 +4,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/extensions/build_context_x.dart';
 import '../../../../common/utils/image_utils.dart';
+import '../../domain/entities/home.dart';
 
 final faker = Faker();
 
 class HomeCard extends StatelessWidget {
-  const HomeCard({super.key});
+  const HomeCard({
+    super.key,
+    required this.home,
+  });
+
+  final IHome home;
 
   @override
   Widget build(BuildContext context) {
-    final name = faker.person.name();
     return InkWell(
       splashColor: context.color.tertiary.withOpacity(0.5),
       onTap: () {
@@ -26,25 +31,23 @@ class HomeCard extends StatelessWidget {
             ImageUtils.loadCircleAvatar(
               strokeWidth: 2.w,
               fit: BoxFit.fill,
-              faker.image.image(
-                keywords: ['hot body girl', 'name'],
-                random: true,
-              ),
+              home.image,
               radius: 50.w,
             ), // Load image (Replace with your image path
-            const SizedBox(width: 10.0), // Add spacing between the image and text
+            const SizedBox(
+                width: 10.0), // Add spacing between the image and text
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   8.verticalSpace,
                   _buildText(
-                      name,
+                      home.name,
                       context.textTheme.titleLarge
                           .copyWith(color: context.color.tertiary)),
                   4.verticalSpace, // Spacing between text widgets
                   _buildText(
-                      faker.lorem.sentences(5).join(' '),
+                      home.info,
                       context.textTheme.titleSmall
                           .copyWith(color: context.color.tertiary)),
                   8.verticalSpace,

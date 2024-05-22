@@ -15,7 +15,7 @@ class HomeState with _$HomeState {
 
   const factory HomeState({
     @Default(HomeStatus.initial) HomeStatus status,
-    IHome? data,
+    @Default([]) List<IHome> homes,
     ApiError? error,
   }) = _HomeState;
 
@@ -29,8 +29,8 @@ extension HomeStateX on HomeState {
         error: error,
       );
 
-  HomeState onLoaded(IHome data) => copyWith(
+  HomeState onLoaded(List<IHome> homes) => copyWith(
         status: HomeStatus.loaded,
-        data: data,
+        homes: homes,
       );
 }

@@ -15,11 +15,15 @@ part 'home_cubit.g.dart';
 @injectable
 class HomeCubit extends Cubit<HomeState> with CancelableBaseBloc {
   final IHomeRepository _repository;
-  HomeCubit(this._repository) : super(const HomeState());
+  HomeCubit(this._repository) : super(const HomeState()) {
+    get();
+  }
 
-  get() async {
-    emit(state.loading);
-    final response = await _repository.getById(1, token: cancelToken);
+  get({bool isRefresh = false}) async {
+    if (!isRefresh) {
+      emit(state.loading);  
+    }
+    final response = await _repository.get(token: cancelToken);
     response.fold(
       (result) => emit(state.onLoaded(result)),
       (error) => emit(state.onError(error)),
