@@ -20,7 +20,7 @@ class HomeMockupRepository implements IHomeRepository {
   @override
   Future<Result<List<IHome>, ApiError>> get({CancelToken? token}) async {
     await 3.seconds.delay;
-    final random = faker.randomGenerator.integer(3);
+    final random = faker.randomGenerator.integer(10);
     if (random <= 1) {
       return ApiError.server(
               message:

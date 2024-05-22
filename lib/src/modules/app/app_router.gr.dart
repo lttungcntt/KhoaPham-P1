@@ -40,9 +40,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     HomeDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<HomeDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const HomeDetailPage(),
+        child: HomeDetailPage(
+          key: args.key,
+          data: args.data,
+        ),
       );
     },
     HomeRoute.name: (routeData) {
@@ -137,16 +141,40 @@ class DashboardRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [HomeDetailPage]
-class HomeDetailRoute extends PageRouteInfo<void> {
-  const HomeDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class HomeDetailRoute extends PageRouteInfo<HomeDetailRouteArgs> {
+  HomeDetailRoute({
+    Key? key,
+    required IHome data,
+    List<PageRouteInfo>? children,
+  }) : super(
           HomeDetailRoute.name,
+          args: HomeDetailRouteArgs(
+            key: key,
+            data: data,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'HomeDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<HomeDetailRouteArgs> page =
+      PageInfo<HomeDetailRouteArgs>(name);
+}
+
+class HomeDetailRouteArgs {
+  const HomeDetailRouteArgs({
+    this.key,
+    required this.data,
+  });
+
+  final Key? key;
+
+  final IHome data;
+
+  @override
+  String toString() {
+    return 'HomeDetailRouteArgs{key: $key, data: $data}';
+  }
 }
 
 /// generated route for

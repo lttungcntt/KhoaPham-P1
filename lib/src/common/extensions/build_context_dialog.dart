@@ -2,7 +2,6 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
-import '../constants/constants.dart';
 import '../widgets/adaptive_dialog_action.dart';
 import 'build_context_x.dart';
 
