@@ -14,19 +14,23 @@ import '../../../home/domain/entities/home.dart';
 import '../../../home/infrastructure/models/home_model.dart';
 import '../../presentation/widgets/home_card.dart';
 
-// final json = jsonDecode(_FakeRepository.cache());
-// final response = SingleApiResponse.fromJson(json, Configuration.fromJson);
-// return response.data.toSuccess();
-
 @alpha
 @LazySingleton(as: IHomeRepository)
 class HomeMockupRepository implements IHomeRepository {
   @override
   Future<Result<List<IHome>, ApiError>> get({CancelToken? token}) async {
     await 3.seconds.delay;
-    final json = jsonDecode(FakeHomeMockup.getSuccessJson());
-    final response = ListApiResponse.fromJson(json, HomeModel.fromJson);
-    return response.data.toSuccess();
+    final random = faker.randomGenerator.integer(3);
+    if (random <= 1) {
+      return ApiError.server(
+              message:
+                  'This is a long error message from the server. It contains a lot of details about what went wrong, so that the user can understand the problem and possibly fix it.')
+          .toFailure();
+    } else {
+      final json = jsonDecode(FakeHomeMockup.getSuccessJson());
+      final response = ListApiResponse.fromJson(json, HomeModel.fromJson);
+      return response.data.toSuccess();
+    }
   }
 }
 
@@ -43,9 +47,7 @@ class FakeHomeMockup {
       'age': faker.randomGenerator.integer(32, min: 18),
       'gender': gender.type,
       'image': faker.image.image(
-        keywords: [
-          'bikini', 'hot body girl'
-        ],
+        keywords: ['bikini', 'hot body girl'],
         random: true,
       ),
     };
@@ -76,6 +78,19 @@ class FakeHomeMockup {
         ${dummy(12)},
         ${dummy(13)}
       ]
+    }
+    ''';
+  }
+
+  static String getErrorJson() {
+    return '''
+    {
+      "result": {
+        "status": 400,
+        "message_code": "fail",
+        "message": "Unexpected Error",
+        "dt": "2023-02-01 10:00:00"
+      }
     }
     ''';
   }

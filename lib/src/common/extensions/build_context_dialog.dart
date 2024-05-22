@@ -1,7 +1,10 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
+import '../constants/constants.dart';
 import '../widgets/adaptive_dialog_action.dart';
+import 'build_context_x.dart';
 
 class DialogAction {
   final String text;
@@ -13,7 +16,36 @@ class DialogAction {
 extension BuildContextDialog on BuildContext {
   bool get isShowingDialog => ModalRoute.of(this)?.isCurrent != true;
 
-  void showError(String message) => showAlert(title: S.current.common_error, content: message);
+  void showError(String message, {void Function()? onPressed}) {
+    Flushbar? flush;
+    void dismiss() {
+      if (flush != null) {
+        flush.dismiss();
+      }
+    }
+
+    flush = Flushbar(
+      backgroundColor: Colors.red,
+      flushbarPosition: FlushbarPosition.TOP,
+      flushbarStyle: FlushbarStyle.GROUNDED,
+      mainButton: TextButton(
+        onPressed: () {
+          dismiss();
+          onPressed?.call();
+        },
+        child: const Text('Retry', style: TextStyle(color: Colors.white)),
+      ),
+      messageText: Text(
+        message,
+        style: textTheme.titleMedium.copyWith(color: Colors.white),
+      ),
+      // duration: const Duration(seconds: Constants.toastDuration),
+      leftBarIndicatorColor: Colors.red,
+      blockBackgroundInteraction: true,
+    );
+    flush.show(this);
+  }
+  // showAlert(title: S.current.common_error, content: message);
 
   void showAlert({
     String? title,

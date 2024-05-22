@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../common/extensions/build_context_dialog.dart';
 import '../../../../common/extensions/build_context_x.dart';
+import '../../../../common/widgets/background_container.dart';
 import '../../../../common/widgets/shimmer_loading_cart.dart';
 import '../../application/cubit/home_cubit.dart';
 import 'home_card.dart';
@@ -12,20 +14,25 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocConsumer<HomeCubit, HomeState>(
+      listener: (context, state) => state.status.maybeWhen(
+        error: () {
+          context.showError(state.error?.message ?? 'Error', onPressed: () {
+            context.read<HomeCubit>().get();
+          });
+        },
+        orElse: () {},
+      ),
+      // buildWhen: (previous, current) => current.status != previous.status,
       builder: (context, state) {
-        return Container(
-          color: context.color.primaryContainer,
+        return BackgroundContainer(
           child: RefreshIndicator(
             onRefresh: () async {
               await context.read<HomeCubit>().get(isRefresh: true);
             },
             child: ListView.separated(
               shrinkWrap: true,
-              physics: state.status.isLoading
-                  ? const NeverScrollableScrollPhysics()
-                  : null,
-              itemCount: state.homes.isEmpty ? 10 : state.homes.length,
+              itemCount: state.status.isLoading ? 10 : state.homes.length,
               separatorBuilder: (context, index) => const SizedBox(height: 10),
               padding: EdgeInsets.only(
                       left: 16,
