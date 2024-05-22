@@ -12,45 +12,42 @@ class AboutBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: context.color.primaryContainer,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: BlocBuilder<AboutBloc, AboutState>(builder: (context, state) {
-          return Column(
-            children: [
-              AnimatedSize(
-                duration: 300.milliseconds,
-                child: SizedBox(
-                  height: state.when(show: () => null, hide: () => 0.0),
-                  width: context.mediaQuery.size.width,
-                  child: Text(
-                    '''
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: BlocBuilder<AboutBloc, AboutState>(builder: (context, state) {
+        return Column(
+          children: [
+            AnimatedSize(
+              duration: 300.milliseconds,
+              child: SizedBox(
+                height: state.when(show: () => null, hide: () => 0.0),
+                width: context.mediaQuery.size.width,
+                child: Text(
+                  '''
     Aliquip consectetur anim est nostrud quis eu nisi nulla enim aliqua labore ad.
     Magna nisi nulla do cillum sunt.
     Id velit occaecat reprehenderit minim dolore ut in cupidatat culpa nostrud.
     Cupidatat sint commodo est consequat sunt officia adipisicing cupidatat in.
                 ''',
-                    style: context.textTheme.bodyMedium
-                        .copyWith(color: context.color.tertiary),
-                  ),
+                  style: context.textTheme.bodyMedium
+                      .copyWith(color: context.color.tertiary),
                 ),
               ),
-              OutlinedButton(
-                onPressed: () => state.when(
-                  show: () =>
-                      context.read<AboutBloc>().add(const AboutEvent.hide()),
-                  hide: () =>
-                      context.read<AboutBloc>().add(const AboutEvent.show()),
-                ),
-                child: Icon(state.when(
-                    show: () => Icons.visibility_off,
-                    hide: () => Icons.visibility)),
-              )
-            ],
-          );
-        }),
-      ),
+            ),
+            OutlinedButton(
+              onPressed: () => state.when(
+                show: () =>
+                    context.read<AboutBloc>().add(const AboutEvent.hide()),
+                hide: () =>
+                    context.read<AboutBloc>().add(const AboutEvent.show()),
+              ),
+              child: Icon(state.when(
+                  show: () => Icons.visibility_off,
+                  hide: () => Icons.visibility)),
+            )
+          ],
+        );
+      }),
     );
   }
 }

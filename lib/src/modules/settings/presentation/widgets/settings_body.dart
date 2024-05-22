@@ -5,7 +5,9 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../common/extensions/build_context_x.dart';
+import '../../../../common/extensions/color_scheme.dart';
 import '../../../../common/extensions/locale_x.dart';
+import '../../../../common/widgets/background_container.dart';
 import '../../../../core/application/cubits/lang/lang_cubit.dart';
 import '../../../../core/application/cubits/lang/theme_cubit.dart';
 import '../../../app/app_router.dart';
@@ -18,8 +20,7 @@ class SettingsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: context.color.primaryContainer,
+    return BackgroundContainer(
       child: ListView(
         children: [
           _buildLanguageDropdown(context),
@@ -37,7 +38,7 @@ class SettingsBody extends StatelessWidget {
           Text(
             context.s.common_language,
             style: context.textTheme.titleMedium
-                .copyWith(color: context.color.tertiary),
+                .copyWith(color: context.color.primaryText),
           ),
           const Spacer(),
           BlocBuilder<LangCubit, Locale>(
@@ -51,7 +52,7 @@ class SettingsBody extends StatelessWidget {
                             child: Text(
                               locale.languageName,
                               style: context.textTheme.titleMedium
-                                  .copyWith(color: context.color.tertiary),
+                                  .copyWith(color: context.color.primaryText),
                             ),
                           ))
                       .toList(),
@@ -76,7 +77,7 @@ class SettingsBody extends StatelessWidget {
           Text(
             context.s.setting_dark_mode,
             style: context.textTheme.titleMedium
-                .copyWith(color: context.color.tertiary),
+                .copyWith(color: context.color.primaryText),
           ),
           const Spacer(),
           BlocBuilder<ThemeCubit, ThemeMode>(
@@ -90,7 +91,7 @@ class SettingsBody extends StatelessWidget {
                             child: Text(
                               context.s.themeMode(themeMode),
                               style: context.textTheme.titleMedium
-                                  .copyWith(color: context.color.tertiary),
+                                  .copyWith(color: context.color.primaryText),
                             ),
                           ))
                       .toList(),
@@ -118,7 +119,7 @@ class SettingsBody extends StatelessWidget {
             if (version != null && buildNumber != null) {
               return Text(context.s.common_version('$version($buildNumber)'),
                   style: context.textTheme.titleSmall
-                      .copyWith(color: context.color.tertiary));
+                      .copyWith(color: context.color.primaryText));
             }
             return const SizedBox();
           }),

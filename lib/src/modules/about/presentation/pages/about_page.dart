@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../common/extensions/build_context_x.dart';
+import '../../../../common/widgets/background_container.dart';
 import '../../../../common/widgets/common_appbar.dart';
 import '../../application/blocs/about/about_bloc.dart';
 import '../widgets/about_body.dart';
@@ -18,9 +19,11 @@ class AboutPage extends StatelessWidget {
         title: context.s.common_about,
         context: context,
       ),
-      body: BlocProvider(
-        create: (context) => AboutBloc(),
-        child: const AboutBody(),
+      body: BackgroundContainer(
+        child: BlocProvider(
+          create: (context) => AboutBloc(),
+          child: const AboutBody(),
+        ),
       ),
     );
   }

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../common/extensions/build_context_x.dart';
+import '../../../../common/extensions/color_scheme.dart';
 import '../../../../common/utils/getit_utils.dart';
+import '../../../../common/widgets/background_container.dart';
 import '../../../../common/widgets/common_appbar.dart';
 import '../../application/cubit/home_cubit.dart';
 import '../widgets/home_body.dart';
@@ -27,15 +29,17 @@ class _HomePageState extends State<HomePage>
         title: context.s.common_home,
         actions: [
           IconButton(
-            icon: const Icon(Icons.filter_list, color: Colors.white),
+            icon: Icon(Icons.filter_list, color: context.color.primaryText),
             splashColor: context.color.tertiary,
             onPressed: () => {},
           ),
         ],
       ),
-      body: BlocProvider(
-        create: (context) => getIt<HomeCubit>(),
-        child: const HomeBody(),
+      body: BackgroundContainer(
+        child: BlocProvider(
+          create: (context) => getIt<HomeCubit>(),
+          child: const HomeBody(),
+        ),
       ),
     );
   }

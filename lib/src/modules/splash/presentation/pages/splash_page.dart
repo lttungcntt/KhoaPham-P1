@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../common/extensions/int_duration.dart';
 import '../../../../common/utils/getit_utils.dart';
+import '../../../../common/widgets/background_container.dart';
 import '../../../app/app_router.dart';
 
 @RoutePage()
@@ -25,6 +26,11 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    return const Scaffold(
+        body: BackgroundContainer(
+      child: Center(
+        child: CircularProgressIndicator(),
+      ),
+    ));
   }
 }
