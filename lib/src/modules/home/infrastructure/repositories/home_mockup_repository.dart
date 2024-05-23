@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:result_dart/result_dart.dart';
 import 'dart:convert';
 
+import '../../../../common/constants/constants.dart';
 import '../../../../common/enum/enum.dart';
 import '../../../../common/extensions/int_duration.dart';
 import '../../../../core/infrastructure/datasources/remote/api/base/api_response.dart';
@@ -47,7 +48,7 @@ class FakeHomeMockup {
       'age': faker.randomGenerator.integer(32, min: 18),
       'gender': gender.type,
       'image': faker.image.image(
-        keywords: ['bikini', 'hot body girl'],
+        keywords: Constants.kHomeKeyWords,
         random: true,
       ),
     };

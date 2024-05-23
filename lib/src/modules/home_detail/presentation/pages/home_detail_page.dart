@@ -20,7 +20,7 @@ class HomeDetailPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<HomeDetailCubit>(),
       child: Scaffold(
-        body: HomeDetailBody(),
+        body: const HomeDetailBody(),
         appBar: CommonAppBar(
           context: context,
           title: data.name,

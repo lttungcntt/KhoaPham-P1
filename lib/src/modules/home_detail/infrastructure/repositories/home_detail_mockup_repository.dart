@@ -12,7 +12,8 @@ import '../../../home_detail/infrastructure/models/home_detail_model.dart';
 @LazySingleton(as: IHomeDetailRepository)
 class HomeDetailMockupRepository implements IHomeDetailRepository {
   @override
-  Future<Result<IHomeDetail,ApiError>> getById(int id, {CancelToken? token}) async {
-    return Result.success(const HomeDetailModel());
+  Future<Result<IHomeDetail, ApiError>> getById(int id,
+      {CancelToken? token}) async {
+    return const Result.success(HomeDetailModel());
   }
 }
