@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'text_theme/default_text_theme.dart';
+import 'default_text_theme.dart';
 import 'text_theme_interfaces.dart';
 
 typedef AppThemeFilters = TextThemeFactory? Function(

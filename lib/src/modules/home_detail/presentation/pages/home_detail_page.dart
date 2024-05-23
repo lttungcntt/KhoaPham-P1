@@ -25,7 +25,7 @@ class HomeDetailPage extends StatelessWidget {
           context: context,
           title: data.name,
           leading: IconButton(
-            splashColor: context.color.primary.withOpacity(0.8),
+            splashColor: context.colorTheme.primary.withOpacity(0.8),
             icon: const Icon(
               Icons.arrow_back,
               color: Colors.white,

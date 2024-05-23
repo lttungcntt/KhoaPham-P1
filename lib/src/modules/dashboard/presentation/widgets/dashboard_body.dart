@@ -80,16 +80,16 @@ class _DashboardBodyState extends State<DashboardBody>
             ];
             return MotionTabBar(
               textStyle: context.textTheme.titleMedium.copyWith(
-                color: context.color.tertiary,
+                color: context.colorTheme.primaryText,
                 fontSize: 15.sp,
               ),
-              tabSelectedColor: context.color.secondary,
-              tabIconColor: context.color.tertiary,
-              tabIconSelectedColor: context.color.tertiary,
+              tabSelectedColor: context.colorTheme.secondary,
+              tabIconColor: context.colorTheme.primary,
+              tabIconSelectedColor: context.colorTheme.primaryText,
               tabBarHeight: 55.w,
               tabSize: 50.w,
               tabIconSize: 20.w,
-              tabBarColor: context.color.primaryContainer,
+              tabBarColor: context.colorTheme.primaryContainer,
               controller: _motionTabBarController,
               labels: tabs.map((e) => e.keys.first).toList(),
               icons: tabs.map((e) => e.values.first).toList(),

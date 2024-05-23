@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../generated/colors.gen.dart';
-import '../../../generated/fonts.gen.dart';
+import '../../../../generated/colors.gen.dart';
+import '../../../../generated/fonts.gen.dart';
 import 'text_theme_interfaces.dart';
 
 

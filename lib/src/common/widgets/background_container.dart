@@ -19,7 +19,7 @@ class BackgroundContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backgroundColor ?? context.color.primaryContainer,
+      color: backgroundColor ?? context.colorTheme.primaryContainer,
       height: height,
       width: width,
       child: child,

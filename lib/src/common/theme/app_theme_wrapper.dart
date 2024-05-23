@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'app_theme.dart';
-import 'text_theme_interfaces.dart';
+import 'color_theme/color_theme_interfaces.dart';
+import 'text_theme/text_theme_interfaces.dart';
 
 typedef AppThemeBuilder = Widget Function(BuildContext c, ThemeData data);
 
@@ -20,6 +21,7 @@ class AppThemeWrapper extends StatelessWidget {
     final themeData = appTheme.build();
     return AppThemeInheritWidget(
       factory: appTheme.factory,
+      colorFactory: appTheme.colorFactory,
       child: builder(context, themeData),
     );
   }
@@ -30,9 +32,11 @@ class AppThemeInheritWidget extends InheritedWidget {
     super.key,
     required super.child,
     required this.factory,
+    required this.colorFactory,
   });
 
   final TextThemeFactory factory;
+  final ColorThemeFactory colorFactory;
 
   @override
   bool updateShouldNotify(covariant AppThemeInheritWidget oldWidget) {

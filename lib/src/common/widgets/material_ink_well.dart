@@ -22,9 +22,9 @@ class MaterialInkWell extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               onTap: onTap,
-              splashColor: context.color.primary.withOpacity(0.5),
-              highlightColor: context.color.primary.withOpacity(0.5),
-              focusColor: context.color.primary.withOpacity(0.5),
+              splashColor: context.colorTheme.primary.withOpacity(0.5),
+              highlightColor: context.colorTheme.primary.withOpacity(0.5),
+              focusColor: context.colorTheme.primary.withOpacity(0.5),
             ),
           ),
         )

@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage>
         actions: [
           IconButton(
             icon: const Icon(Icons.filter_list, color: Colors.white),
-            splashColor: context.color.primary.withOpacity(0.5),
+            splashColor: context.colorTheme.primary.withOpacity(0.5),
             onPressed: () => {},
           ),
         ],

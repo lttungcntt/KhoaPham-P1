@@ -5,7 +5,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../common/extensions/build_context_x.dart';
-import '../../../../common/extensions/color_scheme.dart';
 import '../../../../common/extensions/locale_x.dart';
 import '../../../../common/widgets/background_container.dart';
 import '../../../../core/application/cubits/lang/lang_cubit.dart';
@@ -38,13 +37,13 @@ class SettingsBody extends StatelessWidget {
           Text(
             context.s.common_language,
             style: context.textTheme.titleMedium
-                .copyWith(color: context.color.primaryText),
+                .copyWith(color: context.colorTheme.primaryText),
           ),
           const Spacer(),
           BlocBuilder<LangCubit, Locale>(
             builder: (context, state) {
               return DropdownButton<Locale>(
-                  dropdownColor: context.color.primaryContainer,
+                  dropdownColor: context.colorTheme.primaryContainer,
                   value: state,
                   items: LocaleX.supportedLocales
                       .map((locale) => DropdownMenuItem(
@@ -52,7 +51,7 @@ class SettingsBody extends StatelessWidget {
                             child: Text(
                               locale.languageName,
                               style: context.textTheme.titleMedium
-                                  .copyWith(color: context.color.primaryText),
+                                  .copyWith(color: context.colorTheme.primaryText),
                             ),
                           ))
                       .toList(),
@@ -77,13 +76,13 @@ class SettingsBody extends StatelessWidget {
           Text(
             context.s.setting_dark_mode,
             style: context.textTheme.titleMedium
-                .copyWith(color: context.color.primaryText),
+                .copyWith(color: context.colorTheme.primaryText),
           ),
           const Spacer(),
           BlocBuilder<ThemeCubit, ThemeMode>(
             builder: (context, state) {
               return DropdownButton<ThemeMode>(
-                  dropdownColor: context.color.primaryContainer,
+                  dropdownColor: context.colorTheme.primaryContainer,
                   value: state,
                   items: ThemeMode.values
                       .map((themeMode) => DropdownMenuItem(
@@ -91,7 +90,7 @@ class SettingsBody extends StatelessWidget {
                             child: Text(
                               context.s.themeMode(themeMode),
                               style: context.textTheme.titleMedium
-                                  .copyWith(color: context.color.primaryText),
+                                  .copyWith(color: context.colorTheme.primaryText),
                             ),
                           ))
                       .toList(),
@@ -119,7 +118,7 @@ class SettingsBody extends StatelessWidget {
             if (version != null && buildNumber != null) {
               return Text(context.s.common_version('$version($buildNumber)'),
                   style: context.textTheme.titleSmall
-                      .copyWith(color: context.color.primaryText));
+                      .copyWith(color: context.colorTheme.primaryText));
             }
             return const SizedBox();
           }),

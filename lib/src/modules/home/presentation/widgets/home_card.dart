@@ -45,12 +45,12 @@ class HomeCard extends StatelessWidget {
                 _buildText(
                     home?.name,
                     context.textTheme.titleLarge
-                        .copyWith(color: context.color.tertiary)),
+                        .copyWith(color: context.colorTheme.primaryText)),
                 4.verticalSpace, // Spacing between text widgets
                 _buildText(
                     home?.info,
                     context.textTheme.titleSmall
-                        .copyWith(color: context.color.tertiary)),
+                        .copyWith(color: context.colorTheme.primaryText)),
                 8.verticalSpace,
               ],
             ),

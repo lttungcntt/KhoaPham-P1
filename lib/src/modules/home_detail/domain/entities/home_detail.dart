@@ -5,7 +5,7 @@ abstract class IHomeDetail {
   String get name;
   String get email;
   String get phoneNumber;
-  DateTime get birthDate;
+  DateTime? get birthDate;
   String get address;
   String get city;
   String get country;

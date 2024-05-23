@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../extensions/build_context_x.dart';
-import '../extensions/color_scheme.dart';
 import '../utils/image_utils.dart';
 import 'background_container.dart';
 
@@ -97,8 +96,8 @@ class _CustomSliderState extends State<CustomSlider> {
             height: 10,
             decoration: BoxDecoration(
                 color: currentIndex == index
-                    ? context.color.primaryText
-                    : context.color.primaryText.withOpacity(0.26),
+                    ? context.colorTheme.primaryText
+                    : context.colorTheme.primaryText.withOpacity(0.26),
                 shape: BoxShape.circle),
           );
         },

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../extensions/build_context_x.dart';
-import '../extensions/color_scheme.dart';
 
 class ShimmerLoadingCard extends StatelessWidget {
   const ShimmerLoadingCard({
@@ -16,7 +15,7 @@ class ShimmerLoadingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: Colors.grey,
-      highlightColor: context.color.primaryText,
+      highlightColor: context.colorTheme.primaryText,
       direction: ShimmerDirection.ltr,
       period: const Duration(milliseconds: 900),
       child: child,

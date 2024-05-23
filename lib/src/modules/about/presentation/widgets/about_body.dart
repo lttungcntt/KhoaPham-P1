@@ -30,7 +30,7 @@ class AboutBody extends StatelessWidget {
     Cupidatat sint commodo est consequat sunt officia adipisicing cupidatat in.
                 ''',
                   style: context.textTheme.bodyMedium
-                      .copyWith(color: context.color.tertiary),
+                      .copyWith(color: context.colorTheme.primaryText),
                 ),
               ),
             ),
