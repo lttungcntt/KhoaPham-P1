@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -9,7 +8,6 @@ import '../../../../common/extensions/locale_x.dart';
 import '../../../../common/widgets/background_container.dart';
 import '../../../../core/application/cubits/lang/lang_cubit.dart';
 import '../../../../core/application/cubits/lang/theme_cubit.dart';
-import '../../../app/app_router.dart';
 import '../../../dashboard/application/cubit/dashboard_cubit.dart';
 
 class SettingsBody extends StatelessWidget {
@@ -50,8 +48,8 @@ class SettingsBody extends StatelessWidget {
                             value: locale,
                             child: Text(
                               locale.languageName,
-                              style: context.textTheme.titleMedium
-                                  .copyWith(color: context.colorTheme.primaryText),
+                              style: context.textTheme.titleMedium.copyWith(
+                                  color: context.colorTheme.primaryText),
                             ),
                           ))
                       .toList(),
@@ -59,8 +57,6 @@ class SettingsBody extends StatelessWidget {
                     if (value == null) return;
                     final langCubit = context.read<LangCubit>();
                     langCubit.setLocale(value);
-                    context.read<DashboardCubit>().setPosition(0);
-                    context.router.replace(SplashRoute());
                   });
             },
           ),
@@ -89,8 +85,8 @@ class SettingsBody extends StatelessWidget {
                             value: themeMode,
                             child: Text(
                               context.s.themeMode(themeMode),
-                              style: context.textTheme.titleMedium
-                                  .copyWith(color: context.colorTheme.primaryText),
+                              style: context.textTheme.titleMedium.copyWith(
+                                  color: context.colorTheme.primaryText),
                             ),
                           ))
                       .toList(),

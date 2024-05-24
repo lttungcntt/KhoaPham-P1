@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../extensions/build_context_x.dart';
 import '../utils/image_utils.dart';
+import '../utils/logger.dart';
 import 'background_container.dart';
+import 'material_ink_well.dart';
 
 class CustomSlider extends StatefulWidget {
   const CustomSlider({
@@ -39,7 +41,8 @@ class _CustomSliderState extends State<CustomSlider> {
     return BackgroundContainer(
       height: 250.h,
       width: MediaQuery.of(context).size.width,
-      child: Column(
+      child: Stack(
+        alignment: AlignmentDirectional.bottomCenter,
         children: [
           Expanded(
             child: PageView.builder(
@@ -71,15 +74,20 @@ class _CustomSliderState extends State<CustomSlider> {
     );
   }
 
-  AnimatedContainer _sliderItem(images, pagePosition, active) {
-    double margin = active ? 10 : 20;
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOutCubic,
-      margin: EdgeInsets.all(margin),
-      child: ImageUtils.load(
-        images[pagePosition],
-        fit: BoxFit.fitWidth,
+  Widget _sliderItem(images, pagePosition, active) {
+    double margin = active ? 0 : 20;
+    return GestureDetector(
+      onTap: () {
+        logger.d('On tap image url: ${images[pagePosition]}');
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOutCubic,
+        margin: EdgeInsets.all(margin),
+        child: ImageUtils.load(
+          images[pagePosition],
+          fit: BoxFit.fitWidth,
+        ),
       ),
     );
   }
@@ -98,7 +106,8 @@ class _CustomSliderState extends State<CustomSlider> {
                 color: currentIndex == index
                     ? context.colorTheme.primaryText
                     : context.colorTheme.primaryText.withOpacity(0.26),
-                shape: BoxShape.circle),
+                shape: BoxShape.circle,
+                border: Border.all(color: context.colorTheme.backgroundAppBar)),
           );
         },
       ),
