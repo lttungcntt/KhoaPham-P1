@@ -15,7 +15,9 @@ part 'home_detail_cubit.g.dart';
 @injectable
 class HomeDetailCubit extends Cubit<HomeDetailState> with CancelableBaseBloc {
   final IHomeDetailRepository _repository;
-  HomeDetailCubit(this._repository) : super(const HomeDetailState());
+  HomeDetailCubit(this._repository) : super(const HomeDetailState()) {
+    get();
+  }
 
   get() async {
     emit(state.loading);

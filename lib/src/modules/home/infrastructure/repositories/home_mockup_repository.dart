@@ -7,6 +7,7 @@ import 'dart:convert';
 import '../../../../common/constants/constants.dart';
 import '../../../../common/enum/enum.dart';
 import '../../../../common/extensions/int_duration.dart';
+import '../../../../common/utils/fake_mockup.dart';
 import '../../../../core/infrastructure/datasources/remote/api/base/api_response.dart';
 import '../../domain/interfaces/home_interface.dart';
 import '../../../../common/utils/app_environment.dart';
@@ -28,14 +29,16 @@ class HomeMockupRepository implements IHomeRepository {
                   'This is a long error message from the server. It contains a lot of details about what went wrong, so that the user can understand the problem and possibly fix it.')
           .toFailure();
     } else {
-      final json = jsonDecode(FakeHomeMockup.getSuccessJson());
+      final json = jsonDecode(FakeHomeMockup.instance.getSuccessJson());
       final response = ListApiResponse.fromJson(json, HomeModel.fromJson);
       return response.data.toSuccess();
     }
   }
 }
 
-class FakeHomeMockup {
+class FakeHomeMockup extends FakeMockup {
+  static final FakeHomeMockup instance = FakeHomeMockup();
+
   static String dummy(int index) {
     final gender =
         Gender.values[faker.randomGenerator.integer(Gender.values.length)];
@@ -55,7 +58,8 @@ class FakeHomeMockup {
     return jsonEncode(data).toString();
   }
 
-  static String getSuccessJson() {
+  @override
+  String getSuccessJson() {
     return '''
     {
       "result": {
@@ -79,19 +83,6 @@ class FakeHomeMockup {
         ${dummy(12)},
         ${dummy(13)}
       ]
-    }
-    ''';
-  }
-
-  static String getErrorJson() {
-    return '''
-    {
-      "result": {
-        "status": 400,
-        "message_code": "fail",
-        "message": "Unexpected Error",
-        "dt": "2023-02-01 10:00:00"
-      }
     }
     ''';
   }
