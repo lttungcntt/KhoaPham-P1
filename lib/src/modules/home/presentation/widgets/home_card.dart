@@ -36,7 +36,7 @@ class HomeCard extends StatelessWidget {
             home?.image ?? '',
             radius: 50.w,
           ), // Load image (Replace with your image path
-          const SizedBox(width: 10), // Add spacing between the image and text
+          16.horizontalSpace, // Add spacing between the image and text
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

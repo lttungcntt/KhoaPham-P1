@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../common/converters/date_time_converter.dart';
 import '../../../../common/enum/enum.dart';
 import '../../domain/entities/home_detail.dart';
 
@@ -13,9 +14,10 @@ class HomeDetailModel with _$HomeDetailModel implements IHomeDetail {
   const factory HomeDetailModel({
     @JsonKey(name: 'id') @Default(-1) int id,
     @JsonKey(name: 'name') @Default('') String name,
+    @JsonKey(name: 'info') @Default('') String info,
     @JsonKey(name: 'email') @Default('') String email,
-    @JsonKey(name: 'phoneNumber') @Default('') String phoneNumber,
-    @JsonKey(name: 'birthDate') DateTime? birthDate,
+    @JsonKey(name: 'phone_number') @Default('') String phoneNumber,
+    @Iso8601DateTimeConverter() @JsonKey(name: 'birth_date') DateTime? birthDate,
     @JsonKey(name: 'address') @Default('') String address,
     @JsonKey(name: 'city') @Default('') String city,
     @JsonKey(name: 'country') @Default('') String country,

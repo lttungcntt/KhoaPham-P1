@@ -5,7 +5,6 @@ import '../extensions/build_context_x.dart';
 import '../utils/image_utils.dart';
 import '../utils/logger.dart';
 import 'background_container.dart';
-import 'material_ink_well.dart';
 
 class CustomSlider extends StatefulWidget {
   const CustomSlider({
@@ -22,12 +21,12 @@ class CustomSlider extends StatefulWidget {
 class _CustomSliderState extends State<CustomSlider> {
   late PageController _pageController;
 
-  int activePage = 1;
+  int activePage = 0;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(viewportFraction: 0.95, initialPage: 1);
+    _pageController = PageController(viewportFraction: 0.95, initialPage: 0);
   }
 
   @override

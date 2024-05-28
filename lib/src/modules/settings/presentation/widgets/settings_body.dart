@@ -8,7 +8,6 @@ import '../../../../common/extensions/locale_x.dart';
 import '../../../../common/widgets/background_container.dart';
 import '../../../../core/application/cubits/lang/lang_cubit.dart';
 import '../../../../core/application/cubits/lang/theme_cubit.dart';
-import '../../../dashboard/application/cubit/dashboard_cubit.dart';
 
 class SettingsBody extends StatelessWidget {
   const SettingsBody({

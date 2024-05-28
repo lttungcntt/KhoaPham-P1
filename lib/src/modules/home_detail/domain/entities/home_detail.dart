@@ -9,6 +9,7 @@ abstract class IHomeDetail {
   String get address;
   String get city;
   String get country;
+  String get info;
   Gender get gender;
   List<String> get photos;
   List<String> get videos;
